@@ -688,9 +688,6 @@ class Admin_Theme_Options_Controller extends Admin_Controller {
         $_priorratio = module::get_var("th_greydragon", "thumb_ratio", "photo");
         $thumb_ratio = $form->edit_theme_adv_thumb->thumb_ratio->value;
         $thumb_ratio_ex = $form->edit_theme_adv_thumb->thumb_ratio_ex->value;
-        if ($thumb_ratio_ex):
-          $thumb_ratio .= "_ex";
-        endif;
 
         if ($thumb_ratio_ex):
           $thumb_size   = 300;  
@@ -702,6 +699,10 @@ class Admin_Theme_Options_Controller extends Admin_Controller {
           $rule = Image::AUTO;
         else:
           $rule = Image::WIDTH;
+        endif;
+
+        if ($thumb_ratio_ex):
+          $thumb_ratio .= "_ex";
         endif;
 
         if ($build_thumbs):

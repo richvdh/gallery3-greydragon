@@ -398,8 +398,8 @@ class Theme_View extends Theme_View_Core {
       $title = text::limit_chars($title, $limit_title_length);
     endif;
 
-    if ($title === "")
-      $title = t(ucfirst($item->type)) . " " . $item->id;
+#    if ($title === "")
+#      $title = t(ucfirst($item->type)) . " " . $item->id;
 
     return $title;
   }

@@ -404,6 +404,11 @@ class Theme_View extends Theme_View_Core {
     return $title;
   }
 
+  public function get_item_date($item) {
+      return gallery::date_time($item->captured);
+  }
+
+
   public function breadcrumb_menu($theme, $parents) {
     $content = "";
     if ($this->breadcrumbs_position == "hide"):
@@ -613,7 +618,7 @@ class Theme_View extends Theme_View_Core {
       $thumb_content .= '<a class="g-meta-exif-link g-dialog-link" href="' . url::site("exif/show/{$item->id}") . '" title="' . t("Photo details")->for_html_attr() . '">&nbsp;</a>';
     endif;
 
-    $thumb_content .= '<a title="' . $this->get_item_title($item) . '" '. $_shift . ' class="' . $class_name . '" href="' . $direct_link . '">';
+    $thumb_content .= '<a title="' . $this->get_item_title($item) . '" '. $_shift . ' class="' . $class_name . '" href="' . $direct_link . '" data-date="'. $this->get_item_date($item) . '">';
     if ($thumb_item->has_thumb()):
       if (($this->crop_factor > 1) && ($this->thumb_imgalign == "fit")):
       	if ($thumb_item->thumb_height > $this->_thumb_size_y):

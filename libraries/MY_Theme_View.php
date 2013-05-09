@@ -405,9 +405,8 @@ class Theme_View extends Theme_View_Core {
   }
 
   public function get_item_date($item) {
-      return gallery::date_time($item->captured);
+      return date("d M Y", $item->captured);
   }
-
 
   public function breadcrumb_menu($theme, $parents) {
     $content = "";
